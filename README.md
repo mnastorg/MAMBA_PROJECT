@@ -37,16 +37,23 @@ The basic commands are the following :
 1. Open a Terminal window and go the project's folder.
 2. Activate mamba_macos environment : **conda activate mamba_macos**
 3. Open ipython : **ipython**
-4. Then you have to run the __main__ file that you're interested in. For instance, if you want to use fitting programm : **run main_fitting**
+4. Then you have to run the __main__ file that you're interested in. For instance, if you want to use fitting program : **run main_fitting**
 5. Once you did that you only have to launch the function that interest you with the corresponding correct arguments.
 
 ## How to vizualise files ?
 
 Most of the files can be read in Paraview : https://www.paraview.org 
 
-1. STL / VTP / VTU files are directly read once uploaded in Paraview.
+1. STL / VTP / VTU ... files are directly read once uploaded in Paraview.
 2. CSV files are readable after selecting Filters --> Alphabetical --> Table to points then select in properties "x, y, z" and colors depending on other scalars.
 3. For nii.gz files (3d Segmented images) it is possible to use free open-source software ITK-SNAP.
 
+# What can you do ? 
+
+## 3D mathematical skeleton fitting
+
+## Aortic aneurysm wall parametrization
+
+## 
 
 
