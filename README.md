@@ -18,9 +18,9 @@ The codes we are going to use all along this project are compiling with Python v
 
 Run in a Terminal window the following lines : 
 
-1.Create the environment from the mamba_macos.yml file : **conda env create -f environment.yml**
-2.Activate the new environment : **conda activate mamba_macos**
-3.Verify that the new environment was installed correctly : **conda info --envs**
+1. Create the environment from the mamba_macos.yml file : **conda env create -f environment.yml**
+2. Activate the new environment : **conda activate mamba_macos**
+3. Verify that the new environment was installed correctly : **conda info --envs**
 
 As you can see on the .yml file name, we built the environment on a Mac Os operating systems, which can (and probably will) provides errors while doing step 1 if you use another system. In that case, I recommand taking a look at the following link : https://johannesgiorgis.com/sharing-conda-environments-across-different-operating-systems/.
 
