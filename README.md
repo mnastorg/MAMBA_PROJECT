@@ -30,14 +30,15 @@ If you still can't build the environment the following packages are the ones to 
 
 Codes are usually organized in the following order : The __main__ files which contains the principal functions and the other Python files that are located in the different folders. 
 
-If you don't want to change anything in the code you only have to run those __main__ files. To do it, we use the python prompt **ipython** but you can also use Spyder or any other Python file interpreter. We use Atom to vizualise and edit Python files. 
+If you don't want to change anything in the code, then you only have to run those __main__ files. To do it, we use the python prompt **ipython** but you can also use Spyder or any other Python file interpreter. We use Atom to vizualise and edit Python files. 
 
 The basic commands are the following : 
 
-1. Open a Terminal window and go the project's folder 
-2. Activate mamba_macos environment : **conda activate mamba_macos**
-3. Open ipython : **ipython**
-4. Then you have to run the __main__ file that you're interested in. For instance, if you want to use fitting programm : **run main_fitting**
+1. Open a Terminal window and go the project's folder.
+2. Activate mamba_macos environment : **conda activate mamba_macos**.
+3. Open ipython : **ipython**.
+4. Then you have to run the __main__ file that you're interested in. For instance, if you want to use fitting programm : **run main_fitting**.
 5. Once you did that you only have to launch the function that interest you with the corresponding correct arguments.
+
 
 
