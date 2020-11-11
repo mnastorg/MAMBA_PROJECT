@@ -1,4 +1,4 @@
-# How to run the codes ?
+# Project description
 
 ## Overview of Anaconda
 
@@ -27,3 +27,17 @@ As you can see on the .yml file name, we built the environment on a Mac Os opera
 If you still can't build the environment the following packages are the ones to install manually (with the creation of a python environment with version **3.6.1**) : geomdl // importlib // ipython // itk // matplotlib // meshio // networkx // numpy // openmesh-python // openssl // pandas // pyglet // python 3.6.1 // scikit-fmm // scikit-learn // scipy // symfit // sympy // trimesh // vmtk // pip // vtk. (All the packages can be read in the .yml files in details).
 
 ## How to run codes ? 
+
+Codes are usually organized in the following order : The __main__ files which contains the principal functions and the other Python files that are located in the different folders. 
+
+If you don't want to change anything in the code you only have to run those __main__ files. To do it, we use the python prompt **ipython** but you can also use Spyder or any other Python file interpreter. We use Atom to vizualise and edit Python files. 
+
+The basic commands are the following : 
+
+1. Open a Terminal window and go the project's folder 
+2. Activate mamba_macos environment : **conda activate mamba_macos**
+3. Open ipython : **ipython**
+4. Then you have to run the __main__ file that you're interested in. For instance, if you want to use fitting programm : **run main_fitting**
+5. Once you did that you only have to launch the function that interest you with the corresponding correct arguments.
+
+
