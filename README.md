@@ -1,4 +1,4 @@
-# Project description
+# Installation
 
 ## Overview of Anaconda
 
@@ -48,12 +48,56 @@ Most of the files can be read in Paraview : https://www.paraview.org
 2. CSV files are readable after selecting Filters --> Alphabetical --> Table to points then select in properties "x, y, z" and colors depending on other scalars.
 3. For nii.gz files (3d Segmented images) it is possible to use free open-source software ITK-SNAP.
 
-# What can you do ? 
+# How to work with the codes ?
 
-## 3D mathematical skeleton fitting
+To start with, you only need two things : 
 
-## Aortic aneurysm wall parametrization
+1. Download this project on your computer.
+2. Create a folder which contains 3D images NIFTI files (mine is called **patients_nifti**).
 
-## 
+## Codes organization 
 
+For now, there are only two __main__ functions we can work with : 
+
+1. **main_pre_processing**
+2. **main_geometry_reduction**
+
+These two functions call "utilities" functions which are located in the folders : 
+
+1. **tools** contains functions to :
+  * Manage files like reading / writing different kinds of files (**Files_Management.py**)
+  * Create and work with BSplines (**BSplines_Utilities.py**)
+  * Use statistical tools (**Statistics_Utilities.py**)
+2. **geometry_utilities** contains functions to : 
+  * Make some treatments on geometries (**Geometry_Treatment.py**)
+  * Perform aortic aneurysms wall parametrization (**Parametrization_Utilities**)
+  * Other functions which are not relevant for now.
+3. **model_reduction_utilities** contains functions to perform geometrical model reduction for a set of 3D aortic aneurysms parametrized geometries. 
+
+The __main__ files usually use several parameters. At the beginning of each function, there is a reserved space where you can change them. The most used functions usually contain comments to help the reader understand what the algorithm is doing. For any other questions...feel free to ask ! 
+
+## Function main_pre_processing 
+
+This is the first function you need to use. It allows you to create all data from your NIFTI files to use them in other functions. 
+
+To run it, after completing step 1 to 4 of chapter "How to run codes ?" simply enter : **Main_pre_processing("patients_nifti/", add_extension = (False/True))** where "patients_nifti" is where you stored your nifti files.
+
+This function will automatically create a folder "patients_data" (you can change the name in the function) in which it will store the following elements : 
+1. Conversion of NIFTI file to marching cubes STL file
+2. Smooth version of marching cube STL file 
+3. Centerline extraction (with manual interaction - see doc in the function to know how to use it)
+4. Conversion of centerline to B-Spline
+5. Open the geometry at the extremity 
+6. Remesh of the openend geometry 
+7. If add_extension = True, it adds extensions at the extremity of the geometry
+
+This function uses the VMTK module, you can find some documentation here : http://www.vmtk.org 
+
+## Function main_geometry_reduction
+
+This function first build a geometric model reduction with respect to a set of initial 3D aortic aneurysms geometries (more precisely the algorithm reads parametrization files created with the function above). Then, it allows to build random geometries.
+
+To run it, after completing step 1 to 4 of chapter "How to run codes ?" simply enter : **Main_geo_reduction("patients_data/", nb_generation = X, mesh_extractor = (False/True)):** where "patients_datas" is where you stored files thanks to previous functions, X is the number of random geometries you want to create and mesh_extractor turns point cloud to 3D surface mesh STL format.
+
+More details are available inside the .py file.
 
