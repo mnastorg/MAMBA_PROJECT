@@ -32,6 +32,12 @@ gf.Reload(map)
 #FUNCTION THAT BUILD THE MAPPING FROM SIMVSACULAR SOLUTION A CYLINDER USING PARAMETRIZATION FILE
 #YOU NEED TO COPY SV RESULTS IN YOUR RESPECTIV FOLDER OF YOUR PATIENTS DATA
 
+#FIRST IT ANALYSIS ALL THE FILES SUCH THAT THE AVERAGE LENGTH AND RADIUS BECOME THE NORM FOR CYLINDER'S SHAPE
+#THEN IT BUILDS THE CYLINDER FOR ALL GEOMETRIES FOLLOWING SPECIFIC PARAMETRIZATION
+
+#FINALLY FOR EACH SOLUTION (VTU FILE), COMPUTE RESPECTIVE PARAMETRIZATION, FILL WITH SUBDIVISION, INTERPOLATE THE SOLUTION
+#INTO PARAMETRIZATION AND TRANSFER SOLUTION INTO THE CYLINDER
+
 #################################################################################################################################
 ############################################## MAIN FUNCTION PROGRAMM ###########################################################
 #################################################################################################################################
