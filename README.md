@@ -57,12 +57,13 @@ To start with, you only need two things :
 
 ## Codes organization 
 
-For now, there are only two __main__ functions we can work with : 
+There are three __main__ functions you can work with : 
 
 1. **main_pre_processing**
 2. **main_geometry_reduction**
+3. **main_mapping**
 
-These two functions call "utilities" functions which are located in the folders : 
+These functions call "utilities" functions which are located in the folders : 
 
 1. **tools** contains functions to :
   * Manage files like reading / writing different kinds of files (**Files_Management.py**)
@@ -71,10 +72,13 @@ These two functions call "utilities" functions which are located in the folders 
 2. **geometry_utilities** contains functions to : 
   * Make some treatments on geometries (**Geometry_Treatment.py**)
   * Perform aortic aneurysms wall parametrization (**Parametrization_Utilities**)
+  * Help building mapping from CFD solution to a cylinder (**Mapping_Utilities**)
   * Other functions which are not relevant for now.
-3. **model_reduction_utilities** contains functions to perform geometrical model reduction for a set of 3D aortic aneurysms parametrized geometries. 
+3. **model_reduction_utilities** contains functions to : 
+  * Perform geometrical model reduction for a set of 3D aortic aneurysms parametrized geometries (**Geometric_Model_Reduction**).
+  * Use Gaussian Mixture model to create a generative model (**Geo_Reduction_Gaussian_Mixture**).
 
-The __main__ files usually use several parameters. At the beginning of each function, there is a reserved space where you can change them. The most used functions usually contain comments to help the reader understand what the algorithm is doing. For any other questions...feel free to ask ! 
+The __main__ files usually use several parameters. At the beginning of each function, there is a reserved space where you can change them. The most used functions usually contain comments to help the reader understand what the algorithm is doing. For any other questions ... feel free to ask ! 
 
 ## Function main_pre_processing 
 
@@ -95,9 +99,14 @@ This function uses the VMTK module, you can find some documentation here : http:
 
 ## Function main_geometry_reduction
 
-This function first build a geometric model reduction with respect to a set of initial 3D aortic aneurysms geometries (more precisely the algorithm reads parametrization files created with the function above). Then, it allows to build random geometries.
+This file contains two functions which aim at building a geometric model reduction with respect to a set of initial 3D aortic aneurysms geometries (more precisely the algorithm reads parametrization files created with the function above). The first function named **Geo_reduction_wall_radius** perform first technique (described in the beamer) which basically consists in computing 3 reduced basis to generate geometries. The second one called **Geo_reduction_coeff_evolution** is performing second technique which consists in tracking the evolution of Fourier coefficient along sections. 
 
-To run it, after completing step 1 to 4 of chapter "How to run codes ?" simply enter : **Main_geo_reduction("patients_data/", nb_generation = X, mesh_extractor = (False/True)):** where "patients_datas" is where you stored files thanks to previous functions, X is the number of random geometries you want to create and mesh_extractor turns point cloud to 3D surface mesh STL format.
+To run it, after completing step 1 to 4 of chapter "How to run codes ?" simply enter : **Geo_reduction_wall_radius("patients_data/", nb_generation = X, rot_sec = (False/True), mesh_extractor = (False/True)):** where "patients_datas" is where you stored files thanks to previous functions, X is the number of random geometries you want to create, rot_sec is performing rotation of sections according to first plan orientation and mesh_extractor turns point cloud to 3D surface mesh STL format.
 
-More details are available inside the .py file.
+## Function main_mapping
 
+This function simply takes as an input folder where you put both solutions from CFD computation and parametrization file. Thanks to both of this data, it performs a mapping from the initial solution to a cylinder. The cylinder's shape is based on the length and average radius of all your initial provided data.
+
+To run it, after completing step 1 to 4 of chapter "How to run codes ?" simply enter : **Main_mapping("path_patients_datas/")** where "patients_datas" is where you stored files thanks to previous functions.
+
+More details are also available inside the codes as comments.
