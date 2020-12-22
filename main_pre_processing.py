@@ -59,7 +59,7 @@ def Main_pre_processing(path_nifti_all, add_extension = False) :
     print("Number of nifti files in folder : {} \n".format(len(folder)))
 
     #WRITE HERE FOLDER NAME WHERE YOU WANT TO STORE YOUR DATA ! (MINE IS CALLED patients_data)
-    path_datas = "patients_data/"
+    path_datas = "patients_data_large/"
 
     #READ EACH FILE IN FOLDER
     for file in folder :
@@ -111,8 +111,8 @@ def Main_pre_processing(path_nifti_all, add_extension = False) :
 
         #WALL PARAMETRIZATION
         degree_centerline = 3
-        nb_centerline_points_parametrization = 10
-        nb_thetas = 160
+        nb_centerline_points_parametrization = 3000
+        nb_thetas = 200
         fourier_order = 5
 
         #REMESH THE OPENED GEOMETRY
@@ -152,8 +152,8 @@ def Main_pre_processing(path_nifti_all, add_extension = False) :
         geo_treat.Mesh_Slice(path_mesh_closed, PARAMETRIZATION, path_mesh_opened)
         print("")
 
-        print(" -> Remesh of the open mesh geometry")
-        geo_treat.Surface_Remesh(path_mesh_opened, path_mesh_opened_remesh, target_edge_length = edge_length, nb_iterations = iterations_remesh)
+        #print(" -> Remesh of the open mesh geometry")
+        #geo_treat.Surface_Remesh(path_mesh_opened, path_mesh_opened_remesh, target_edge_length = edge_length, nb_iterations = iterations_remesh)
 
         if add_extension == True :
             print(" -> Add extension at the boudaries of the open mesh")
